@@ -1,9 +1,9 @@
-window.onload = function () {
-    Constructor.init();
-}
+import {TransformControls} from "./lib/TransformControls.js";
+import {OrbitControls} from "./lib/OrbitControls.js";
 
-let Constructor = {
-    createScene: function () {
+class Constructor {
+    transformControls;
+    createScene () {
         let scene = new THREE.Scene();
         window.scene = scene;
 
@@ -19,37 +19,28 @@ let Constructor = {
         let mesh = new THREE.Mesh(geometry, material);
         this.sphere = mesh;
         scene.add(mesh);
-
-        let cube = new THREE.BoxGeometry();
-        let mesh2 = new THREE.Mesh(cube, material);
-        scene.add(mesh2);
-
         return scene;
-    },
+    }
 
-    animate: function (render, scene, camera) {
+    animate (render, scene, camera) {
         requestAnimationFrame(this.animate.bind(this, render, scene, camera));
-        // this.controls.update();
-        this.sphere.rotation.x += 0.005;
-        this.sphere.rotation.y += 0.005;
-        this.sphere.rotation.z += 0.005;
         render.render(scene, camera);
-    },
+    }
 
-    createRender: function (workarea, width, height) {
+    createRender (workarea, width, height) {
         let render = new THREE.WebGLRenderer();
         workarea.appendChild(render.domElement);
         render.setPixelRatio(window.devicePixelRatio)
         render.setSize(width, height);
         return render;
-    },
+    }
 
-    createPerspectiveCamera: function(aspect){
+    createPerspectiveCamera (aspect){
         let camera = new THREE.PerspectiveCamera(45, aspect, 1, 1000);
         return camera;
-    },
+    }
 
-    init: function () {
+    constructor () {
         this.scene = this.createScene();
         let container = document.getElementsByClassName('webgl')[0];
         let aspect = container.offsetWidth / container.offsetHeight;
@@ -76,12 +67,18 @@ let Constructor = {
         camera_3d.lookAt(new THREE.Vector3(0,0,0));
         scene.add(camera_3d);
 
-        let workarea_width = container.offsetWidth/2.01;
+        let workarea_width = container.offsetWidth/2.015;
         let workarea_height = container.offsetHeight/2;
         let render_top = this.createRender(container.querySelectorAll('#workarea_top')[0], workarea_width, workarea_height);
         let render_front = this.createRender(container.querySelectorAll('#workarea_front')[0], workarea_width, workarea_height);
         let render_right = this.createRender(container.querySelectorAll('#workarea_right')[0], workarea_width, workarea_height);
         let render_3d = this.createRender(container.querySelectorAll('#workarea_3d')[0], workarea_width, workarea_height);
+
+        this.transformControls = new TransformControls(camera_3d, render_3d.domElement);
+        this.transformControls.attach(this.sphere);
+        scene.add(this.transformControls);
+
+        const orbitControls = new OrbitControls(camera_3d, render_3d.domElement);
 
         this.animate(render_top, scene, camera_top);
         this.animate(render_front, scene, camera_front);
@@ -89,3 +86,19 @@ let Constructor = {
         this.animate(render_3d, scene, camera_3d);
     }
 }
+
+const constructor = new Constructor();
+
+window.addEventListener('keydown', event => {
+    switch (event.keyCode) {
+        case 71: // g
+            constructor.transformControls.setMode("translate");
+            break;
+        case 82: // r
+            constructor.transformControls.setMode("rotate");
+            break;
+        case 83: // s
+            constructor.transformControls.setMode("scale");
+            break
+    }
+});
