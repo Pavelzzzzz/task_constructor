@@ -437,37 +437,37 @@ function MenubarAdd( editor ) {
 
 	//
 
-	options.add( new UIHorizontalRule() );
+	// options.add( new UIHorizontalRule() );
 
 	// OrthographicCamera
 
-	option = new UIRow();
-	option.setClass( 'option' );
-	option.setTextContent( strings.getKey( 'menubar/add/orthographiccamera' ) );
-	option.onClick( function () {
-
-		var camera = new THREE.OrthographicCamera();
-		camera.name = 'OrthographicCamera';
-
-		editor.execute( new AddObjectCommand( editor, camera ) );
-
-	} );
-	options.add( option );
+	// option = new UIRow();
+	// option.setClass( 'option' );
+	// option.setTextContent( strings.getKey( 'menubar/add/orthographiccamera' ) );
+	// option.onClick( function () {
+	//
+	// 	var camera = new THREE.OrthographicCamera();
+	// 	camera.name = 'OrthographicCamera';
+	//
+	// 	editor.execute( new AddObjectCommand( editor, camera ) );
+	//
+	// } );
+	// options.add( option );
 
 	// PerspectiveCamera
 
-	option = new UIRow();
-	option.setClass( 'option' );
-	option.setTextContent( strings.getKey( 'menubar/add/perspectivecamera' ) );
-	option.onClick( function () {
-
-		var camera = new THREE.PerspectiveCamera();
-		camera.name = 'PerspectiveCamera';
-
-		editor.execute( new AddObjectCommand( editor, camera ) );
-
-	} );
-	options.add( option );
+	// option = new UIRow();
+	// option.setClass( 'option' );
+	// option.setTextContent( strings.getKey( 'menubar/add/perspectivecamera' ) );
+	// option.onClick( function () {
+	//
+	// 	var camera = new THREE.PerspectiveCamera();
+	// 	camera.name = 'PerspectiveCamera';
+	//
+	// 	editor.execute( new AddObjectCommand( editor, camera ) );
+	//
+	// } );
+	// options.add( option );
 
 	return container;
 

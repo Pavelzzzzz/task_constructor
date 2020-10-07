@@ -10,6 +10,7 @@
     import { Viewport } from '../js/Viewport.js';
     import {Sidebar} from "../js/Sidebar";
     import { Menubar } from '../js/Menubar.js';
+    import { Toolbar } from '../js/Toolbar.js';
 
     export default {
         name: "EditorPage",
@@ -21,14 +22,17 @@
             };
         },
         mounted() {
-            var editor = new Editor();
-            var viewport = new Viewport( editor );
+            let editor = new Editor();
+            let viewport = new Viewport( editor );
             this.$el.appendChild( viewport.dom );
 
-            var sidebar = new Sidebar( editor );
+            let sidebar = new Sidebar( editor );
             this.$el.appendChild( sidebar.dom );
 
-            var menubar = new Menubar( editor );
+            let toolbar = new Toolbar( editor );
+            this.$el.appendChild( toolbar.dom );
+
+            let menubar = new Menubar( editor );
             this.$el.appendChild( menubar.dom );
         }
     }

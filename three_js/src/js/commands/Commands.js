@@ -15,7 +15,7 @@ export { SetMaterialCommand } from './SetMaterialCommand.js';
 export { SetPositionCommand } from './SetPositionCommand.js';
 export { SetRotationCommand } from './SetRotationCommand.js';
 export { SetScaleCommand } from './SetScaleCommand.js';
-// export { SetSceneCommand } from './SetSceneCommand.js';
+export { SetSceneCommand } from './SetSceneCommand.js';
 // export { SetScriptValueCommand } from './SetScriptValueCommand.js';
 export { SetUuidCommand } from './SetUuidCommand.js';
 export { SetValueCommand } from './SetValueCommand.js';

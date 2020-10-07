@@ -2,7 +2,7 @@ import * as THREE from 'three';
 
 import * as signals from 'signals'
 import { Config } from './Config.js';
-// import { Loader } from './Loader.js';
+import { Loader } from './Loader.js';
 import { History as _History } from './History.js';
 import { Strings } from './Strings.js';
 import { Storage as _Storage } from './Storage.js';
@@ -89,7 +89,7 @@ function Editor() {
 	this.storage = new _Storage();
 	this.strings = new Strings( this.config );
 
-	// this.loader = new Loader( this );
+	this.loader = new Loader( this );
 
 	this.camera = _DEFAULT_CAMERA.clone();
 
@@ -358,7 +358,7 @@ Editor.prototype = {
 
 	},
 
-	addAnimation: function ( object, animations ) {
+	addAnimations: function ( object, animations ) {
 
 		if ( animations.length > 0 ) {
 
