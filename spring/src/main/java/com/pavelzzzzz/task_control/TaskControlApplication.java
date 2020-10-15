@@ -1,4 +1,4 @@
-package com.pavelzzzzzz;
+package com.pavelzzzzz.task_control;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -9,5 +9,4 @@ public class TaskControlApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(TaskControlApplication.class, args);
 	}
-
 }
