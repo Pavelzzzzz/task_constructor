@@ -1,0 +1,27 @@
+version: '3.3'
+services:
+  task_constructor_mysql:
+   container_name: task_constructor_mysql_container
+   image: mysql/mysql-server:8.0.21
+   environment:
+    MYSQL_USER: flyway
+    MYSQL_PASSWORD: flyway
+    MYSQL_DATABASE: task-constructor
+    MYSQL_ROOT_PASSWORD: 000
+   ports:
+    - 9306:3306
+   restart: always
+  
+  task_constructor_spring:
+    image: maven:3.6.3-openjdk-11
+    build: ./spring/
+    working_dir: /spring
+    volumes:
+      - ./spring:/spring
+      - ~/.m2:/root/.m2
+    ports:
+      - 9000:9000
+    command: mvn clean spring-boot:run
+    depends_on:
+      - task_constructor_mysql
+    restart: always
