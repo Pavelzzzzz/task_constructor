@@ -27,7 +27,7 @@ public class RoleServiceImpl implements RoleService {
   }
 
   @Override
-  public RoleDto getById(int id) throws PocNotFoundException {
+  public RoleDto getById(Integer id) throws PocNotFoundException {
     return fromEntity(
         roleRepository.findById(id)
             .orElseThrow(() -> PocExceptionBuilder

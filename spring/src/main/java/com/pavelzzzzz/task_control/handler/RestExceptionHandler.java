@@ -1,6 +1,7 @@
 package com.pavelzzzzz.task_control.handler;
 
 import com.pavelzzzzz.task_control.exception.PocEntityIsDeletedException;
+import com.pavelzzzzz.task_control.exception.PocException;
 import com.pavelzzzzz.task_control.exception.PocNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -31,6 +32,17 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler {
   public ResponseEntity handlePocEntityIsDeletedException(
       PocEntityIsDeletedException exception) {
     return new ResponseEntity<>(exception.getMessage(), HttpStatus.I_AM_A_TEAPOT);
+  }
+
+  /**
+   * handles PocException
+   * @param exception exception to handle
+   * @return HfsError ResponseEntity
+   */
+  @ExceptionHandler(PocException.class)
+  public ResponseEntity handlePocException(
+          PocException exception) {
+    return new ResponseEntity<>(exception.getMessage(), HttpStatus.EXPECTATION_FAILED);
   }
 
   /**

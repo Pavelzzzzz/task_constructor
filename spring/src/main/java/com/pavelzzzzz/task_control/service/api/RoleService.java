@@ -11,5 +11,5 @@ public interface RoleService extends EntityTransform<RoleDto, Object, Role>{
 
   List<RoleDto> findAll(Pageable pageable);
 
-  RoleDto getById(int id) throws PocNotFoundException;
+  RoleDto getById(Integer id) throws PocNotFoundException;
 }

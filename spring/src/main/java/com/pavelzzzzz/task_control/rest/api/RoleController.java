@@ -11,6 +11,7 @@ import java.util.List;
 /**
  * RoleController rest endpoint
  */
+
 @RequestMapping("/api/roles")
 public interface RoleController {
 
