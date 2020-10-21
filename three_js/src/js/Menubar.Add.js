@@ -39,6 +39,42 @@ function MenubarAdd( editor ) {
 
 	options.add( new UIHorizontalRule() );
 
+	// Point
+
+	option = new UIRow();
+	option.setClass( 'option' );
+	option.setTextContent( strings.getKey( 'menubar/add/point' ) );
+	option.onClick( function () {
+
+		let mesh = new THREE.Points();
+		mesh.material = new THREE.MeshStandardMaterial();
+		mesh.name = 'Point';
+
+		editor.execute( new AddObjectCommand( editor, mesh ) );
+
+	} );
+	options.add( option );
+
+	// Line
+
+	option = new UIRow();
+	option.setClass( 'option' );
+	option.setTextContent( strings.getKey( 'menubar/add/line' ) );
+	option.onClick( function () {
+
+		let points = [];
+		points.push( new THREE.Vector3( - 10, 0, 0 ) );
+		points.push( new THREE.Vector3( 0, 10, 0 ) );
+
+		let geometry = new THREE.BufferGeometry().setFromPoints( points );
+		let mesh = new THREE.Line( geometry, new THREE.MeshStandardMaterial() );
+		mesh.name = 'Line';
+
+		editor.execute( new AddObjectCommand( editor, mesh ) );
+
+	} );
+	options.add( option );
+
 	// Box
 
 	option = new UIRow();
@@ -46,8 +82,8 @@ function MenubarAdd( editor ) {
 	option.setTextContent( strings.getKey( 'menubar/add/box' ) );
 	option.onClick( function () {
 
-		var geometry = new THREE.BoxBufferGeometry( 1, 1, 1, 1, 1, 1 );
-		var mesh = new THREE.Mesh( geometry, new THREE.MeshStandardMaterial() );
+		let geometry = new THREE.BoxBufferGeometry( 1, 1, 1, 1, 1, 1 );
+		let mesh = new THREE.Mesh( geometry, new THREE.MeshStandardMaterial() );
 		mesh.name = 'Box';
 
 		editor.execute( new AddObjectCommand( editor, mesh ) );
