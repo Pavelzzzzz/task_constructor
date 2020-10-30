@@ -6,7 +6,6 @@ import com.pavelzzzzz.task_control.exception.PocNotFoundException;
 import com.pavelzzzzz.task_control.hibernate.entity.File;
 import com.pavelzzzzz.task_control.hibernate.repository.FileRepository;
 import com.pavelzzzzz.task_control.rest.dto.FileDto;
-import com.pavelzzzzz.task_control.rest.dto.RoleDto;
 import com.pavelzzzzz.task_control.service.api.FileService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
@@ -30,7 +29,7 @@ public class FileServiceImpl implements FileService {
         return fromEntity(
                 fileRepository.findById(id)
                         .orElseThrow(() -> PocExceptionBuilder
-                                .createPocNotFoundException(RoleDto.class, id)));
+                                .createPocNotFoundException(FileDto.class, id)));
     }
 
     @Override
@@ -44,7 +43,7 @@ public class FileServiceImpl implements FileService {
     public byte[] download(Integer id) throws PocNotFoundException {
         return fileRepository.findById(id)
                 .orElseThrow(() -> PocExceptionBuilder
-                        .createPocNotFoundException(RoleDto.class, id))
+                        .createPocNotFoundException(FileDto.class, id))
                 .getData();
     }
 

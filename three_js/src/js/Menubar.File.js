@@ -85,38 +85,29 @@ function MenubarFile( editor ) {
 
 	options.add( new UIHorizontalRule() );
 
-	// Export Geometry
+	// Save Object
 
 	option = new UIRow();
 	option.setClass( 'option' );
-	option.setTextContent( strings.getKey( 'menubar/file/export/geometry' ) );
+	option.setTextContent( strings.getKey( 'menubar/file/save/object' ) );
 	option.onClick( function () {
 
 		var object = editor.selected;
 
 		if ( object === null ) {
 
-			alert( 'No object selected.' );
+			alert( 'No object selected' );
 			return;
 
 		}
 
-		var geometry = object.geometry;
-
-		if ( geometry === undefined ) {
-
-			alert( 'The selected object doesn\'t have geometry.' );
-			return;
-
-		}
-
-		var output = geometry.toJSON();
+		var output = object.toJSON();
 
 		try {
 
 			output = JSON.stringify( output, parseNumber, '\t' );
 			// eslint-disable-next-line no-useless-escape
-			output = output.replace( /[\n\t]+([\d.e\-\[\]]+)/g, '$1' );
+			output = output.replace( /[\n\t]+([\d\.e\-\[\]]+)/g, '$1' );
 
 		} catch ( e ) {
 
@@ -124,10 +115,12 @@ function MenubarFile( editor ) {
 
 		}
 
-		saveString( output, 'geometry.json' );
+		saveJSON( output);
 
 	} );
 	options.add( option );
+
+	options.add( new UIHorizontalRule() );
 
 	// Export Object
 
@@ -389,6 +382,35 @@ function MenubarFile( editor ) {
 
 		save( new Blob( [ text ], { type: 'text/plain' } ), filename );
 
+	}
+
+	function saveJSON( json ) {
+		title = JSON.parse(json).object.name;
+
+		const requestOptions = {
+			method: "POST",
+			headers: { "Content-Type": "application/json" },
+			body: JSON.stringify({
+				title: title,
+				body: json
+			})
+		};
+		fetch("http://localhost:9000/api/JSONExport", requestOptions)
+			.then(async response => {
+				const data = await response.json()
+
+				// check for error response
+				if (!response.ok) {
+					// get error message from body or default to response status
+					const error = (data && data.message) || response.status;
+					return Promise.reject(error);
+				}
+				console.log("'", title, "' saved with id =", data.id);
+			})
+			.catch(error => {
+				this.errorMessage = error;
+				console.error('There was an error!', error);
+			});
 	}
 
 	function getAnimations( scene ) {
