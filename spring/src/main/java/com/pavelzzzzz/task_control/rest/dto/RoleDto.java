@@ -1,23 +1,23 @@
 package com.pavelzzzzz.task_control.rest.dto;
 
 public class RoleDto {
-  private Integer roleId;
-  private String roleName;
+  private Integer id;
+  private String name;
 
-  public Integer getRoleId() {
-    return roleId;
+  public Integer getId() {
+    return id;
   }
 
-  public void setRoleId(Integer roleId) {
-    this.roleId = roleId;
+  public void setId(Integer id) {
+    this.id = id;
   }
 
-  public String getRoleName() {
-    return roleName;
+  public String getName() {
+    return name;
   }
 
-  public void setRoleName(String roleName) {
-    this.roleName = roleName;
+  public void setName(String name) {
+    this.name = name;
   }
 
   public static RoleDtoBuilder builder(){
@@ -32,13 +32,13 @@ public class RoleDto {
       roleDto = new RoleDto();
     }
 
-    public RoleDtoBuilder roleId(Integer roleId) {
-      roleDto.setRoleId(roleId);
+    public RoleDtoBuilder id(Integer id) {
+      roleDto.setId(id);
       return this;
     }
 
-    public RoleDtoBuilder roleName(String roleName) {
-      roleDto.setRoleName(roleName);
+    public RoleDtoBuilder name(String name) {
+      roleDto.setName(name);
       return this;
     }
 

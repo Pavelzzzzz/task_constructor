@@ -9,7 +9,6 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
-
 public interface FileService extends EntityTransform<FileDto, MultipartFile, File> {
 
     List<FileDto> findAll(Pageable pageable);

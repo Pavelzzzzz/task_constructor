@@ -1,0 +1,15 @@
+CREATE TABLE IF NOT EXISTS File (
+  Id INT NOT NULL AUTO_INCREMENT,
+  Name VARCHAR(255),
+  Type VARCHAR(255),
+  data longblob,
+  FolderId INT NOT NULL,
+  CreatedAt DATETIME NOT NULL,
+  PRIMARY KEY (Id));
+
+ALTER TABLE File
+  ADD CONSTRAINT File_FolderId_Folder_FK
+    FOREIGN KEY (FolderId)
+      REFERENCES Folder (Id)
+        ON DELETE CASCADE
+        ON UPDATE CASCADE;

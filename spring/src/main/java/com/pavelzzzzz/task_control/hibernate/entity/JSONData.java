@@ -9,7 +9,7 @@ import javax.validation.constraints.NotNull;
 import java.sql.Timestamp;
 
 @Entity
-public class JSONExport {
+public class JSONData {
 
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
@@ -17,6 +17,8 @@ public class JSONExport {
     @NotBlank
     private String title;
     private String body;
+    @NotNull
+    private Integer folderId;
     @NotNull
     private Timestamp createdAt;
 
@@ -44,6 +46,14 @@ public class JSONExport {
         this.body = body;
     }
 
+    public Integer getFolderId() {
+        return folderId;
+    }
+
+    public void setFolderId(Integer folderId) {
+        this.folderId = folderId;
+    }
+
     public Timestamp getCreatedAt() {
         return createdAt;
     }
@@ -52,39 +62,44 @@ public class JSONExport {
         this.createdAt = createdAt;
     }
 
-    public static JSONExportBuilder builder() {
-        return new JSONExportBuilder();
+    public static JSONDataBuilder builder() {
+        return new JSONDataBuilder();
     }
 
-    public static final class JSONExportBuilder {
-        private JSONExport jSONExport;
+    public static final class JSONDataBuilder {
+        private JSONData jSONData;
 
-        private JSONExportBuilder() {
-            jSONExport = new JSONExport();
+        private JSONDataBuilder() {
+            jSONData = new JSONData();
         }
 
-        public JSONExportBuilder id(Integer id) {
-            jSONExport.setId(id);
+        public JSONDataBuilder id(Integer id) {
+            jSONData.setId(id);
             return this;
         }
 
-        public JSONExportBuilder title(String title) {
-            jSONExport.setTitle(title);
+        public JSONDataBuilder title(String title) {
+            jSONData.setTitle(title);
             return this;
         }
 
-        public JSONExportBuilder body(String body) {
-            jSONExport.setBody(body);
+        public JSONDataBuilder body(String body) {
+            jSONData.setBody(body);
             return this;
         }
 
-        public JSONExportBuilder createdAt(Timestamp createdAt) {
-            jSONExport.setCreatedAt(createdAt);
+        public JSONDataBuilder folderId(Integer folderId) {
+            jSONData.setFolderId(folderId);
             return this;
         }
 
-        public JSONExport build() {
-            return jSONExport;
+        public JSONDataBuilder createdAt(Timestamp createdAt) {
+            jSONData.setCreatedAt(createdAt);
+            return this;
+        }
+
+        public JSONData build() {
+            return jSONData;
         }
     }
 }

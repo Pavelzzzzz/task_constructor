@@ -11,23 +11,23 @@ public class Role {
 
   @Id
   @GeneratedValue(strategy= GenerationType.IDENTITY)
-  private Integer roleId;
+  private Integer id;
   @NotBlank
-  private String roleName;
+  private String name;
 
-  public Integer getRoleId() {
-    return roleId;
+  public Integer getId() {
+    return id;
   }
 
-  public void setRoleId(Integer roleId) {
-    this.roleId = roleId;
+  public void setId(Integer roleId) {
+    this.id = roleId;
   }
 
-  public String getRoleName() {
-    return roleName;
+  public String getName() {
+    return name;
   }
 
-  public void setRoleName(String roleName) {
-    this.roleName = roleName;
+  public void setName(String roleName) {
+    this.name = roleName;
   }
 }

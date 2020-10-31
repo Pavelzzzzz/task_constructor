@@ -8,6 +8,7 @@ public class FileDto {
     private String name;
     private String type;
     private long size;
+    private Integer folderId;
     private Timestamp createdAt;
 
     public Integer getId() {
@@ -40,6 +41,14 @@ public class FileDto {
 
     public void setSize(long size) {
         this.size = size;
+    }
+
+    public Integer getFolderId() {
+        return folderId;
+    }
+
+    public void setFolderId(Integer folderId) {
+        this.folderId = folderId;
     }
 
     public Timestamp getCreatedAt() {
@@ -78,6 +87,11 @@ public class FileDto {
 
         public FileDtoBuilder size(long size) {
             fileDto.setSize(size);
+            return this;
+        }
+
+        public FileDtoBuilder folderId(Integer folderId) {
+            fileDto.setFolderId(folderId);
             return this;
         }
 

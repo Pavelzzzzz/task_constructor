@@ -68,6 +68,7 @@ public class FileServiceImpl implements FileService {
                 .name(file.getName())
                 .type(file.getType())
                 .size(file.getData().length)
+                .folderId(file.getFolderId())
                 .createdAt(file.getCreatedAt())
                 .build();
     }
@@ -80,6 +81,7 @@ public class FileServiceImpl implements FileService {
                     .name(StringUtils.cleanPath(multipartFile.getOriginalFilename()))
                     .type(multipartFile.getContentType())
                     .data(multipartFile.getBytes())
+                    // TODO set folder Id
                     .createdAt(new Timestamp(System.currentTimeMillis()))
                     .build();
         } catch (IOException e) {

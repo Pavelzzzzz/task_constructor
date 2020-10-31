@@ -21,6 +21,8 @@ public class File {
     @Lob
     private byte[] data;
     @NotNull
+    private Integer folderId;
+    @NotNull
     private Timestamp createdAt;
 
     public Integer getId() {
@@ -53,6 +55,14 @@ public class File {
 
     public void setData(byte[] data) {
         this.data = data;
+    }
+
+    public Integer getFolderId() {
+        return folderId;
+    }
+
+    public void setFolderId(Integer folderId) {
+        this.folderId = folderId;
     }
 
     public Timestamp getCreatedAt() {
@@ -91,6 +101,11 @@ public class File {
 
         public FileBuilder data(byte[] data) {
             file.setData(data);
+            return this;
+        }
+
+        public FileBuilder folderId(Integer folderId) {
+            file.setFolderId(folderId);
             return this;
         }
 

@@ -37,8 +37,8 @@ public class RoleServiceImpl implements RoleService {
   @Override
   public RoleDto fromEntity(Role role) {
     return RoleDto.builder()
-        .roleId(role.getRoleId())
-        .roleName(role.getRoleName())
+        .id(role.getId())
+        .name(role.getName())
         .build();
   }
 

@@ -392,10 +392,11 @@ function MenubarFile( editor ) {
 			headers: { "Content-Type": "application/json" },
 			body: JSON.stringify({
 				title: title,
-				body: json
+				body: json,
+				folderId: 1
 			})
 		};
-		fetch("http://localhost:9000/api/JSONExport", requestOptions)
+		fetch("http://localhost:9000/api/JSONData", requestOptions)
 			.then(async response => {
 				const data = await response.json()
 
@@ -408,7 +409,6 @@ function MenubarFile( editor ) {
 				console.log("'", title, "' saved with id =", data.id);
 			})
 			.catch(error => {
-				this.errorMessage = error;
 				console.error('There was an error!', error);
 			});
 	}

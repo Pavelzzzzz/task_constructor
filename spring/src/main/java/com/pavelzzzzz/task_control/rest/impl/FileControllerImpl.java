@@ -36,6 +36,7 @@ public class FileControllerImpl implements FileController {
 
     @Override
     public FileDto uploadFile(@RequestPart("file") MultipartFile file) throws PocException {
+        //TODO: set folder
         return fileService.create(file);
     }
 

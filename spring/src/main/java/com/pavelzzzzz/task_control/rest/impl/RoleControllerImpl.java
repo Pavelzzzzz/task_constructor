@@ -23,7 +23,7 @@ public class RoleControllerImpl implements RoleController {
   public List<RoleDto> list(@RequestParam(value = "page", defaultValue = "0", required = false) int page,
                             @RequestParam(value = "size", defaultValue = "10", required = false) int size,
                             @RequestParam(value = "sortDir", defaultValue = "ASC", required = false) String sortDir,
-                            @RequestParam(value = "sort", defaultValue = "RoleId", required = false) String sort) {
+                            @RequestParam(value = "sort", defaultValue = "id", required = false) String sort) {
     PageRequest pageReq = PageRequest.of(page, size, Sort.Direction.fromString(sortDir), sort);
     return roleService.findAll(pageReq);
   }

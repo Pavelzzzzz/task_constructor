@@ -38,6 +38,6 @@ public interface FileController {
   ResponseEntity<byte []> download(Integer id) throws PocNotFoundException;
 
   @DeleteMapping("/{id}")
-  @Operation(summary = "delete file by id")
+  @Operation(summary = "delete FileDto by id")
   ResponseEntity delete(Integer id) throws PocNotFoundException;
 }
