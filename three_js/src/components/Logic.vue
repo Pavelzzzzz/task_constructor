@@ -5,9 +5,7 @@
 </template>
 
 <script>
-    // import * as THREE from '../lib/three.js'
     import * as THREE from 'three'
-    // import { GLTFLoader } from '../lib/GLTFLoader.js';
     import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
 
     export default {

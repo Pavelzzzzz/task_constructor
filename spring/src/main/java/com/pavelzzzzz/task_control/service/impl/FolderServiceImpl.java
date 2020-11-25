@@ -30,6 +30,16 @@ public class FolderServiceImpl implements FolderService {
     }
 
     @Override
+    public List<FolderDto> findAllParentId(Integer parentId, Pageable pageable) throws PocNotFoundException {
+        if (parentId != null && !folderRepository.existsById(parentId)){
+            throw PocExceptionBuilder.createPocNotFoundException(FolderDto.class, parentId);
+        }
+        return folderRepository.findAllByParentId(parentId, pageable).stream()
+                .map(this::fromEntity)
+                .collect(Collectors.toList());
+    }
+
+    @Override
     public FolderDto getById(Integer id) throws PocNotFoundException {
         return fromEntity(
                 folderRepository.findById(id)

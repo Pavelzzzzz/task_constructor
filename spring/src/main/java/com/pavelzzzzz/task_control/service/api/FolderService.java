@@ -13,6 +13,8 @@ public interface FolderService extends EntityTransform<FolderDto, FolderForSaveD
 
     List<FolderDto> findAll(Pageable pageable);
 
+    List<FolderDto> findAllParentId(Integer parentId, Pageable pageable) throws PocNotFoundException;
+
     FolderDto getById(Integer id) throws PocNotFoundException;
 
     FolderDto create(FolderForSaveDto folderForSaveDto) throws PocException;

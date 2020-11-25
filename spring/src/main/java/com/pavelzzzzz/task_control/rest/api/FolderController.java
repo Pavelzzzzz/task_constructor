@@ -24,6 +24,10 @@ public interface FolderController {
   @Operation(summary = "returns list of FolderDto")
   List<FolderDto> list(int page, int size, String sortDir, String sort);
 
+  @GetMapping("/parent")
+  @Operation(summary = "returns list of FolderDto by parentId")
+  List<FolderDto> listByParentId(Integer parentId, int page, int size, String sortDir, String sort) throws PocNotFoundException;
+
   @GetMapping("/{id}")
   @Operation(summary = "returns FolderDto by id ")
   FolderDto get(Integer id) throws PocNotFoundException;

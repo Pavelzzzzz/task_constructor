@@ -34,6 +34,17 @@ public class FolderControllerImpl implements FolderController {
     }
 
     @Override
+    public List<FolderDto> listByParentId(@RequestParam(value = "parentId", required = false) Integer parentId,
+                                          @RequestParam(value = "page", defaultValue = "0", required = false) int page,
+                                          @RequestParam(value = "size", defaultValue = "10", required = false) int size,
+                                          @RequestParam(value = "sortDir", defaultValue = "ASC", required = false) String sortDir,
+                                          @RequestParam(value = "sort", defaultValue = "title", required = false) String sort)
+            throws PocNotFoundException {
+        PageRequest pageReq = PageRequest.of(page, size, Sort.Direction.fromString(sortDir), sort);
+        return folderService.findAllParentId(parentId, pageReq);
+    }
+
+    @Override
     public FolderDto get(@PathVariable Integer id) throws PocNotFoundException {
         return folderService.getById(id);
     }

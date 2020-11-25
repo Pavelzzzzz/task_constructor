@@ -17,6 +17,10 @@ export default new Router({
         {
             path: '/editor',
             component: () => import('./views/EditorPage.vue')
+        },
+        {
+            path: '/folder/tree',
+            component: () => import('./views/FolderTree.vue')
         }
     ]
 })

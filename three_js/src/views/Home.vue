@@ -3,7 +3,8 @@
         <img alt="Vue logo" src="../assets/logo.png">
         <h2>Home page</h2>
         <router-link to="/import">Import</router-link> <br>
-        <router-link to="/editor">Editor</router-link>
+        <router-link to="/editor">Editor</router-link> <br>
+        <router-link to="/folder/tree">Folder tree</router-link>
     </div>
     
 </template>
