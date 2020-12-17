@@ -10,9 +10,9 @@
             <ul v-show="isOpen" v-if="isFolder">
                 <tree-item
                         class="item"
-                        v-for="(child, index) in children"
-                        :key="index"
-                        :folder="child"
+                        v-for="child in children"
+                        :key="child.id"
+                        v-bind:folder="child"
                 ></tree-item>
                 <li class="add" @click="makeFolder">+</li>
             </ul>
@@ -25,7 +25,12 @@
     export default {
         name: "TreeItem",
         props: {
-            folder: Object
+            folder: {
+                type: Object,
+                default (){
+                    return {}
+                }
+            }
         },
         data: function() {
             return {
