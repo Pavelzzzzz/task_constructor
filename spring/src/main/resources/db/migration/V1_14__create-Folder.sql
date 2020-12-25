@@ -7,7 +7,7 @@ CREATE TABLE IF NOT EXISTS Folder (
   PRIMARY KEY (Id));
 
 ALTER TABLE Folder
-  ADD CONSTRAINT Folder_ParentId_Folder_FK
+  ADD CONSTRAINT Folder_ParentId_FK
     FOREIGN KEY (ParentId)
       REFERENCES Folder(Id)
         ON DELETE CASCADE

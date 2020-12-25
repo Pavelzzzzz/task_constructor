@@ -24,7 +24,6 @@ public class RoleDto {
     return new RoleDtoBuilder();
   }
 
-
   public static final class RoleDtoBuilder {
     private RoleDto roleDto;
 
