@@ -1,9 +1,14 @@
 package com.pavelzzzzz.task_control.rest.dto;
 
+import javax.validation.constraints.NotBlank;
+
 public class JSONDataForSaveDto {
 
+    @NotBlank(message = "Title is mandatory")
     private String title;
+    @NotBlank(message = "Body is mandatory")
     private String body;
+    @NotBlank(message = "FolderId is mandatory")
     private Integer folderId;
 
     public String getTitle() {

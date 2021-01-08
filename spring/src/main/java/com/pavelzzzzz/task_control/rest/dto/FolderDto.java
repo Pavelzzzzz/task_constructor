@@ -1,6 +1,7 @@
 package com.pavelzzzzz.task_control.rest.dto;
 
 import java.sql.Timestamp;
+import java.util.Objects;
 
 public class FolderDto {
 
@@ -90,5 +91,22 @@ public class FolderDto {
         public FolderDto build() {
             return folderDto;
         }
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        FolderDto folderDto = (FolderDto) o;
+        return Objects.equals(getId(), folderDto.getId()) &&
+                Objects.equals(getTitle(), folderDto.getTitle()) &&
+                Objects.equals(getParentId(), folderDto.getParentId()) &&
+                Objects.equals(getCreatedAt(), folderDto.getCreatedAt()) &&
+                Objects.equals(getUpdatedAt(), folderDto.getUpdatedAt());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getId(), getTitle(), getParentId(), getCreatedAt(), getUpdatedAt());
     }
 }

@@ -1,8 +1,12 @@
 package com.pavelzzzzz.task_control.rest.dto;
 
+import javax.validation.constraints.NotBlank;
+
 public class FolderForSaveDto {
 
+    @NotBlank(message = "Title is mandatory")
     private String title;
+    @NotBlank(message = "ParentId is mandatory")
     private Integer parentId;
 
     public String getTitle() {

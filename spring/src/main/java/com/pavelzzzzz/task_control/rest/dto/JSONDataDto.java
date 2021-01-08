@@ -1,6 +1,7 @@
 package com.pavelzzzzz.task_control.rest.dto;
 
 import java.sql.Timestamp;
+import java.util.Objects;
 
 public class JSONDataDto {
 
@@ -89,5 +90,22 @@ public class JSONDataDto {
         public JSONDataDto build() {
             return jSONDataDto;
         }
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        JSONDataDto that = (JSONDataDto) o;
+        return Objects.equals(getId(), that.getId()) &&
+                Objects.equals(getTitle(), that.getTitle()) &&
+                Objects.equals(getBody(), that.getBody()) &&
+                Objects.equals(getFolderId(), that.getFolderId()) &&
+                Objects.equals(getCreatedAt(), that.getCreatedAt());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getId(), getTitle(), getBody(), getFolderId(), getCreatedAt());
     }
 }

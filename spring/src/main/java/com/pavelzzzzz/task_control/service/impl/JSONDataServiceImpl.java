@@ -4,7 +4,9 @@ import com.pavelzzzzz.task_control.exception.PocException;
 import com.pavelzzzzz.task_control.exception.PocExceptionBuilder;
 import com.pavelzzzzz.task_control.exception.PocNotFoundException;
 import com.pavelzzzzz.task_control.hibernate.entity.JSONData;
+import com.pavelzzzzz.task_control.hibernate.repository.FolderRepository;
 import com.pavelzzzzz.task_control.hibernate.repository.JSONDataRepository;
+import com.pavelzzzzz.task_control.rest.dto.FolderDto;
 import com.pavelzzzzz.task_control.rest.dto.JSONDataDto;
 import com.pavelzzzzz.task_control.rest.dto.JSONDataForSaveDto;
 import com.pavelzzzzz.task_control.service.api.JSONDataService;
@@ -21,6 +23,8 @@ public class JSONDataServiceImpl implements JSONDataService {
 
     @Autowired
     private JSONDataRepository jsonDataRepository;
+    @Autowired
+    private FolderRepository folderRepository;
 
     @Override
     public List<JSONDataDto> findAll(Pageable pageable) {
@@ -65,6 +69,9 @@ public class JSONDataServiceImpl implements JSONDataService {
 
     @Override
     public JSONData toEntity(JSONDataForSaveDto jsonDataForSaveDto, JSONData oldEntity) throws PocException {
+        if (jsonDataForSaveDto.getFolderId() != null && !folderRepository.existsById(jsonDataForSaveDto.getFolderId())) {
+            throw PocExceptionBuilder.createPocNotFoundException(FolderDto.class, jsonDataForSaveDto.getFolderId());
+        }
         return JSONData.builder()
                 .title(jsonDataForSaveDto.getTitle())
                 .body(jsonDataForSaveDto.getBody())
