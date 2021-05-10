@@ -50,7 +50,7 @@ class FolderControllerImplTest {
         Assertions.assertEquals(child, childs.iterator().next());
     }
 
-    @Test()
+    @Test
     void listByParentIdExpectedPocNotFoundException() {
         Assertions.assertThrows(PocNotFoundException.class, () ->
                 folderController.listByParentId(100, 0, 10, "ASC", "title"));

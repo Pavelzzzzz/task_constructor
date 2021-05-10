@@ -16,8 +16,7 @@ function SidebarSettings( editor ) {
 	// language
 
 	var options = {
-		en: 'English',
-		fr: 'Français'
+		en: 'English'
 	};
 
 	var languageRow = new UIRow();

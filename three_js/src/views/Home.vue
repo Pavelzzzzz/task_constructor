@@ -325,7 +325,7 @@
         position: absolute;
         top: 32px;
         left: 0;
-        right: 300px;
+        right: 353px;
         bottom: 0;
     }
 
@@ -430,7 +430,7 @@
         right: 0;
         top: 32px;
         bottom: 0;
-        width: 300px;
+        width: 353px;
         background: #eee;
         overflow: auto;
     }

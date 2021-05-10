@@ -120,6 +120,32 @@ function MenubarFile( editor ) {
 	} );
 	options.add( option );
 
+	// Save Scene
+
+	option = new UIRow();
+	option.setClass( 'option' );
+	option.setTextContent( strings.getKey( 'menubar/file/save/scene' ) );
+	option.onClick( function () {
+
+		var output = editor.scene.toJSON();
+
+		try {
+
+			output = JSON.stringify( output, parseNumber, '\t' );
+			// eslint-disable-next-line no-useless-escape
+			output = output.replace( /[\n\t]+([\d.e\-\[\]]+)/g, '$1' );
+
+		} catch ( e ) {
+
+			output = JSON.stringify( output );
+
+		}
+
+		saveJSON( output);
+
+	} );
+	options.add( option );
+
 	options.add( new UIHorizontalRule() );
 
 	// Export Object
