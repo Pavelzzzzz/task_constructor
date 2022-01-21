@@ -20,7 +20,7 @@
 		<java.version>11</java.version>
 		<springdoc-openapi-ui.version>1.4.8</springdoc-openapi-ui.version>
 		<validation-api.version>2.0.1.Final</validation-api.version>
-		<com.h2database.version>1.4.200</com.h2database.version>
+		<com.h2database.version>2.1.210</com.h2database.version>
 	</properties>
 
 	<dependencies>
